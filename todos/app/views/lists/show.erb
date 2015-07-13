@@ -19,6 +19,8 @@
     </div>
     <br>
     <button><a href="/lists/<%= @list.id %>/tasks/<%= task.id %>/edit">Edit</a></button>
+    <%=button_to 'Edit', edit_list_task_path(list_id: @list.id, id: task.id), method: :get%>
+    <%=button_to 'Delete', list_task_path(list_id: @list.id, id: task.id), method: :delete%>
 
  <% end %>
 </div>
