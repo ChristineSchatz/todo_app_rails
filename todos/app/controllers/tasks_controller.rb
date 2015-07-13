@@ -1,20 +1,26 @@
 class TasksController < ApplicationController
-  def new
-    @task = Task.new
-  end
-
   def create
-    @task = Task.create(task_params)
+    @list = List.find_by_id(params[:list_id])
+    @task = Task.new(tasks_params)
+    @task.list_id = (params[:list_id])
+    @task.save!
     redirect_to lists_path
   end
 
   def edit
+    @list = List.find_by_id(params[:list_id])
     @task = Task.find_by_id(params[:id])
   end
 
-  private
+  def update
 
-  def task_params
-    params.require(:list).permit(:description)
+  end
+
+  def destroy
+  end
+
+  private
+  def tasks_params
+    params.require(:task).permit(:description, :completed, :list_id)
   end
 end
