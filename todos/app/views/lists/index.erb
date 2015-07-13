@@ -1,0 +1,14 @@
+<h1>Welcome to your Todos App</h1>
+
+<div>
+  <% @lists.each do |list| %>
+    <div>
+      <a href="/lists/<%= list.id %>"><%= list.name %></a>
+    </div>
+  <% end %>
+</div>
+
+<br>
+<br>
+
+<button><a href="/lists/new">Create a new List!</a></button>
