@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     @task = Task.new(tasks_params)
     @task.list_id = (params[:list_id])
     @task.save!
-    redirect_to lists_path
+    redirect_to list_path(id: task.list_id)
   end
 
   def edit
@@ -13,10 +13,16 @@ class TasksController < ApplicationController
   end
 
   def update
-
+    task = Task.find_by_id(params[:id])
+    task.update_attributes(tasks_params)
+    # Task.update(params[:id], tasks_params)
+    redirect_to list_path(id: task.list_id)
   end
 
   def destroy
+    task = Task.find_by_id(params[:id])
+    task.destroy
+    redirect_to list_path(id: task.list_id)
   end
 
   private
