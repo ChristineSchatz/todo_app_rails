@@ -1,0 +1,31 @@
+<h1>Here is your <%= @list.name %> list!</h1>
+
+<div>Create a new Task!</div>
+<div class='new_task_form'>
+  <%= form_for @task do |f| %>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+    <%= f.submit "Save Task" %>
+    <% end %>
+</div>
+
+<br>
+<br>
+
+<div>
+  <% @tasks.each do |task| %>
+    <div>
+      <%= task.description %>
+      <br>
+      <%= task.completed %>
+    </div>
+  <br>
+  <button><a href="/tasks/<%= task.id %>/edit">Edit</a></button>
+  <% end %>
+</div>
+<br>
+<br>
+
+
