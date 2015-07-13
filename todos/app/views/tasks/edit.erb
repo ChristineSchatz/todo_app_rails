@@ -1,6 +1,7 @@
 <h1>Edit your task</h1>
+
 <div>
-  <%=form_for @task do |f| %>
+  <%= form_for [@list,@task] do |f| %>
     <div>
       <%= f.label :description %>
       <%= f.text_field :description %>
