@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   resources :lists do
     resources :tasks
   end
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
